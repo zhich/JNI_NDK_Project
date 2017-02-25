@@ -14,9 +14,7 @@ android {
         ndk {
             moduleName "Atguigu" //so文件: lib+moduleName+.so
             abiFilters "armeabi", "armeabi-v7a", "x86" //cpu的类型
-        }
-        ndk {
-            ldLibs "log"
+            ldLibs "log" //在C中打印日志
         }
     }
     buildTypes {

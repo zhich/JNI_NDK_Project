@@ -99,3 +99,20 @@ JNIEXPORT void JNICALL Java_com_zch_atguigu_jniutils_CCallJava_callbackSayHello
     jstring jst = (*env)->NewStringUTF(env, "I am android1223");
     (*env)->CallStaticVoidMethod(env, jclazz, methodID, jst);
 }
+
+void Java_com_zch_atguigu_MainActivity_callBackShowToast(JNIEnv *env, jobject instance) {
+
+    //1.得到字节码
+    //jclass      (*FindClass)(JNIEnv*, const char*);
+    jclass jclazz = (*env)->FindClass(env, "com/zch/atguigu/MainActivity");
+    //2.得到方法
+    //最后一个参数是方法签名
+    //jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+    jmethodID jmethodIDs = (*env)->GetMethodID(env, jclazz, "showToast", "()V");
+    //3.实例化该类
+    //   jobject     (*AllocObject)(JNIEnv*, jclass);
+    //jobject  jobject1 = (*env)->AllocObject(env,jclazz);
+    //4.调用方法
+    //void        (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+    (*env)->CallVoidMethod(env, instance, jmethodIDs);
+}
